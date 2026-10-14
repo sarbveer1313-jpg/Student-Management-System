@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacker Mode</title>
+<style>
+body {
+    background: #000;
+    color: #00ff66;
+    font-family: monospace;
+    text-align: center;
+    padding: 40px 15px;
+}
+h1
+  {
+    text-shadow: 0 0 15px #00ff66;
+}
+button
+  {
+    background: #00ff66;
+    color: black;
+    border: none;
+    padding: 14px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#output {
+    margin: 25px auto;
+    max-width: 600px;
+    text-align: left;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.glow {
+    animation: blink 0.7s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+    <h1>⚡ HACKER TERMINAL ⚡</h1>
+    <p class="glow">SYSTEM READY...</p>
+
+    <button onclick="startHack()">INITIATE HACK</button>
+
+    <div id="output"></div>
+
+    <script>
+    const messages = [
+        "> Initializing system...",
+        "> Connecting to virtual server...",
+        "> Bypassing imaginary firewall...",
+        "> Scanning digital matrix...",
+        "> Decrypting simulation...",
+        "> ACCESS GRANTED!",
+        "> JUST KIDDING 😎",
+        "> Welcome, Cyber Legend!"
+    ];
+
+    let index = 0;
+
+    function startHack() {
+        const output = document.getElementById("output");
+        const button = document.querySelector("button");
+
+        if (index > 0) return;
+
+        button.disabled = true;
+        button.textContent = "RUNNING...";
+        output.innerHTML = "";
+        index = 0;
+
+        const timer = setInterval(() => {
+            if (index < messages.length) {
+                output.innerHTML += messages[index] + "<br>";
+                index++;
+            } else {
+                clearInterval(timer);
+                button.disabled = false;
+                button.textContent = "RUN AGAIN";
+                index = 0;
+            }
+        }, 700);
+    }
+    </script>
+</body>
+</html>
